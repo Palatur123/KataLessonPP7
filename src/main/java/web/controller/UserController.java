@@ -18,7 +18,7 @@ public class UserController {
 
     @GetMapping("/")
     public String getAllUsers(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("users", userService.getAllUser());
         return "index";
     }
 
@@ -35,7 +35,7 @@ public class UserController {
 
     @PostMapping("/new")
     public String add(@ModelAttribute("user") User user){
-        userService.add(user);
+        userService.addUser(user);
         return "redirect:/";
     }
 
@@ -47,13 +47,13 @@ public class UserController {
 
     @PatchMapping("/{id}")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") long id) {
-        userService.update(id, user);
+        userService.updateUser(user);
         return "redirect:/";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") long id){
-        userService.delete(id);
+        userService.deleteById(id);
         return "redirect:/";
     }
 }
